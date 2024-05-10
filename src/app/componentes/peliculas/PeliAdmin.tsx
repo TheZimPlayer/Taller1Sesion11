@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Pelicula } from "../../modelos/Pelicula";
 import { ARREGLO_PELICULAS } from "../../mocks/Pelicula-mocks";
 import { ARREGLO_PELICULA_GENERO } from "../../utilidades/dominios/DomGenero";
+import { NavLink } from "react-router-dom";
 
 export const PeliAdmin = () => {
   const [arrPeliculas] = useState<Pelicula[]>(ARREGLO_PELICULAS);
@@ -37,6 +38,14 @@ export const PeliAdmin = () => {
                   <td>
                     <img src={miPeli.imagenPeliculaBase64} alt="" className="imagenListado" />
                     <div className="text-info">{miPeli.imagenPelicula}</div>
+                  </td>
+                  <td className="text-center">
+                    <NavLink to="/#">
+                      <i className="fa-solid fa-trash-can rojito"></i>
+                    </NavLink>{" "}
+                    <NavLink to={"/pactual/" + miPeli.codPelicula}>
+                      <i className="fa-regular fa-pen-to-square verde"></i>
+                    </NavLink>
                   </td>
                 </tr>
               ))}
